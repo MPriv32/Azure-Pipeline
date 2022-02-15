@@ -31,7 +31,7 @@ stages:
       inputs:
         provider: 'aws'
         command: 'plan'
-        commandOptions: '-var "my_access_key=$(my_access_key)" -var "my_secret_key=$(my_secret_key)"'
+        commandOptions: '-var "my_access_key=$(my_access_key)" -var "my_secret_key=$(my_secret_key)" -var "public_ssh_key=$(public_ssh_key)"'
         environmentServiceNameAWS: 's3 backend'
     
     - task: TerraformTaskV2@2
