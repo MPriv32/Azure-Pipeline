@@ -1,0 +1,42 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+pr: none
+
+pool:
+  vmImage: windows-latest
+
+stages: 
+- stage: terraform_validate
+  displayName: terraform validate and init
+  jobs:
+  - job:
+    steps:
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+      inputs:
+        terraformVersion: 'latest'
+
+    - task: TerraformTaskV2@2
+      inputs:
+        provider: 'aws'
+        command: 'init'
+        backendServiceAWS: 's3 backend'
+        backendAWSBucketName: 'mp32-terraform-bucket-backend'
+        backendAWSKey: 'tf/terraform.tfstate'
+    
+    - task: TerraformTaskV2@2
+      inputs:
+        provider: 'aws'
+        command: 'plan'
+        commandOptions: '-var "my_access_key=$(my_access_key)" -var "my_secret_key=$(my_secret_key)" -var "public_ssh_key=$(public_ssh_key)"'
+        environmentServiceNameAWS: 's3 backend'
+    
+    - task: TerraformTaskV2@2
+      inputs:
+        provider: 'aws'
+        command: 'apply'
+        commandOptions: '-var "my_access_key=$(my_access_key)" -var "my_secret_key=$(my_secret_key)" -var "public_ssh_key=$(public_ssh_key)"'
+        environmentServiceNameAWS: 's3 backend'
