@@ -38,5 +38,5 @@ stages:
       inputs:
         provider: 'aws'
         command: 'apply'
-        commandOptions: '-var "my_access_key=$(my_access_key)"'
+        commandOptions: '-var "my_access_key=$(my_access_key)" -var "my_secret_key=$(my_secret_key)"'
         environmentServiceNameAWS: 's3 backend'
