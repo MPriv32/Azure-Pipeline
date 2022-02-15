@@ -16,7 +16,7 @@ data "aws_ami" "windows_2019" {
 # Create a key pair to manage the servers
 resource "aws_key_pair" "AzureDevOps" {
   key_name   = "azuredevops"
-  public_key = local.public_key
+  public_key = var.public_ssh_key
 }
 
 # Create network inferface for EC2 instance and assign secruity groups
