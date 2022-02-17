@@ -15,7 +15,7 @@ data "aws_ami" "windows_2019" {
 
 # Create a key pair to manage the servers
 resource "aws_key_pair" "AzureDevOps" {
-  key_name   = local.infra_env
+  key_name   = var.infra_env
   public_key = var.public_ssh_key
 }
 
@@ -25,7 +25,7 @@ resource "aws_network_interface" "vm_nic_1" {
   private_ips = ["10.0.0.100"]
 
   tags = {
-    Name = "${local.infra_env}-nic-1"
+    Name = "${var.infra_env}-nic-1"
   }
 
   security_groups = [
