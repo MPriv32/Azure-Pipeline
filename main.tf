@@ -15,7 +15,6 @@ module "ec2" {
   source = "./modules/ec2"
   infra_env = var.infra_env
   public_ssh_key = var.public_ssh_key
-  subnet_id   = aws_subnet.subnet_1.id
   }
 
   module "iam" {
