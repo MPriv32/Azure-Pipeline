@@ -6,7 +6,7 @@ locals {
 }
 
 resource "aws_iam_instance_profile" "ec2_profile" {
-  name = "${var.infra_env}-EC2-Profile"
+  name = "${var.infra_env}-instance-Profile"
   role = aws_iam_role.ec2_role.name
 
   depends_on = [
