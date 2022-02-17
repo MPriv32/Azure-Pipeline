@@ -43,7 +43,7 @@ resource "aws_eip" "vm_eip_1" {
   depends_on                = [aws_internet_gateway.gw_1]
 
   tags = {
-    Name = "${local.infra_env}-eip-1"
+    Name = "${var.infra_env}-eip-1"
   }
 
 }
