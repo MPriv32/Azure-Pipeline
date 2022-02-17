@@ -1,8 +1,8 @@
 resource "aws_s3_bucket" "s3_bucket" {
-  bucket = "${local.infra_env}-s3-bucket-${random_id.prefix.hex}"
+  bucket = "${var.infra_env}-s3-bucket-${random_id.prefix.hex}"
 
   tags = {
-    Name = "${local.infra_env}-s3-bucket-${random_id.prefix.hex}"
+    Name = "${var.infra_env}-s3-bucket-${random_id.prefix.hex}"
   }
 }
 
@@ -16,7 +16,7 @@ resource "aws_s3_bucket_policy" "s3_policy" {
 
   policy = jsonencode({
     Version = "2012-10-17"
-    Id      = "${local.infra_env}-s3-public"
+    Id      = "${var.infra_env}-s3-public"
     Statement = [
       {
         Sid       = "PublicRead"

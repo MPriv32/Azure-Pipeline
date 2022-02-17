@@ -20,7 +20,7 @@ resource "aws_security_group" "allow_winrm" {
   }
 
   tags = {
-    Name = "${local.infra_env}-allow-winrm"
+    Name = "${var.infra_env}-allow-winrm"
   }
 }
 
@@ -39,6 +39,6 @@ resource "aws_security_group" "allow_rdp" {
   }
 
   tags = {
-    Name = "${local.infra_env}-allow-rdp"
+    Name = "${var.infra_env}-allow-rdp"
   }
 }

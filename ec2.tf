@@ -75,7 +75,7 @@ resource "aws_instance" "virtualmachine_1" {
   user_data = file("./scripts/install-cwagent.ps1")
 
   tags = {
-    Name = "${local.infra_env}-vm-1"
+    Name = "${var.infra_env}-vm-1"
   }
 
 }
