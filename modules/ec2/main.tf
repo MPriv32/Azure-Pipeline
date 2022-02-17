@@ -2,6 +2,9 @@ terraform {
   required_version = ">= 1.1.5"
 }
 
+  module "vpc" {
+    source = "../vpc"
+  }
 # Get the latest Windows 2019 image made by Amazon
 data "aws_ami" "windows_2019" {
   owners      = ["amazon"]

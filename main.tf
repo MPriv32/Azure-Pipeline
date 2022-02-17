@@ -32,7 +32,3 @@ module "ec2" {
     infra_env = var.infra_env
   }
 
-  module "vpc" {
-    source = "./modules/vpc"
-    infra_env = var.infra_env
-  }
