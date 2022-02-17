@@ -4,6 +4,8 @@ terraform {
 
   module "vpc" {
     source = "../vpc"
+
+    infra_env = var.infra_env
   }
 # Get the latest Windows 2019 image made by Amazon
 data "aws_ami" "windows_2019" {
