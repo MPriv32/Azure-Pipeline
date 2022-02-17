@@ -15,7 +15,7 @@ data "aws_ami" "windows_2019" {
 
 # Create a key pair to manage the servers
 resource "aws_key_pair" "AzureDevOps" {
-  key_name   = terraform.workspace
+  key_name   = local.infra_env
   public_key = var.public_ssh_key
 }
 
