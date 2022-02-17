@@ -27,8 +27,4 @@ module "ec2" {
     infra_env = var.infra_env
   }
 
-  module "sg" {
-     source = "./modules/sg"
-    infra_env = var.infra_env
-  }
 

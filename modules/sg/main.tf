@@ -2,11 +2,17 @@ terraform {
   required_version = ">= 1.1.5"
 }
 
+  module "vpc" {
+    source = "../vpc"
+
+    infra_env = var.infra_env
+  }
+
 # Allow WinRM to set adminstrator password
 resource "aws_security_group" "allow_winrm" {
   name        = "allow_winrm"
   description = "Allow access the instances via WinRM over HTTP and HTTPS"
-  vpc_id      = aws_vpc.vpc_1.id
+  vpc_id      = module.vpc.vpc_1.id
 
   ingress {
     description = "Access the instances via WinRM over HTTP and HTTPS"
@@ -32,7 +38,7 @@ resource "aws_security_group" "allow_winrm" {
 resource "aws_security_group" "allow_rdp" {
   name        = "allow_rdp"
   description = "Allow access the instances via RDP"
-  vpc_id      = aws_vpc.vpc_1.id
+  vpc_id      = module.vpc.vpc_1.id
 
   ingress {
     description = "Allow access the instances via RDP"
