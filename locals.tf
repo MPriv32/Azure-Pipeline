@@ -1,9 +1,7 @@
-########### Locals ###########
 locals {
   public_key = var.public_ssh_key
   region     = var.region
   region_az  = var.region_az
-  infra_env = terraform.workspace
 }
 
 resource "random_id" "prefix" {
@@ -21,5 +19,9 @@ variable "region_az" {
 }
 
 variable "public_ssh_key" {
+  type = string
+}
+
+variable "infra_env" {
   type = string
 }

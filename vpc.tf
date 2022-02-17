@@ -3,7 +3,7 @@ resource "aws_vpc" "vpc_1" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    Name = "${local.infra_env}-vpc-1"
+    Name = "${var.infra_env}-vpc-1"
   }
 }
 
@@ -14,7 +14,7 @@ resource "aws_subnet" "subnet_1" {
   availability_zone = local.region_az
 
   tags = {
-    Name = "${local.infra_env}-subnet-1"
+    Name = "${var.infra_env}-subnet-1"
   }
 }
 
@@ -23,7 +23,7 @@ resource "aws_internet_gateway" "gw_1" {
   vpc_id = aws_vpc.vpc_1.id
 
   tags = {
-    Name = "${local.infra_env}-internet-gw"
+    Name = "${var.infra_env}-internet-gw"
   }
 
 }
@@ -38,7 +38,7 @@ resource "aws_route_table" "rt_1" {
   }
 
   tags = {
-    Name = "${local.infra_env}-rt-gw-1"
+    Name = "${var.infra_env}-rt-gw-1"
   }
 }
 
