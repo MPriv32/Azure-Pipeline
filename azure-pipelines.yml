@@ -1,7 +1,7 @@
 trigger:
-  - master
+  - prod
 pr:
-  - master
+  - prod
 
 pool:
   vmImage: windows-latest
