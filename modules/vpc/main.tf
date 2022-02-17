@@ -1,6 +1,4 @@
-terraform {
-  required_version = ">= 1.1.5"
-}
+
 
 # Create new vpc
 resource "aws_vpc" "vpc_1" {
