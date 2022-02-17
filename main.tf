@@ -11,20 +11,4 @@ resource "random_id" "prefix" {
   byte_length = 8
 }
 
-module "ec2" {
-  source = "./modules/ec2"
-  infra_env = var.infra_env
-  public_ssh_key = var.public_ssh_key
-  }
-
-  module "iam" {
-    source = "./modules/iam"
-    infra_env = var.infra_env
-  }
-
-  module "s3" {
-    source = "./modules/s3"
-    infra_env = var.infra_env
-  }
-
 

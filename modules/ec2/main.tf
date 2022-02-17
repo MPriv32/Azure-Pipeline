@@ -13,7 +13,7 @@ terraform {
 
     infra_env = var.infra_env
   }
-  
+
 # Get the latest Windows 2019 image made by Amazon
 data "aws_ami" "windows_2019" {
   owners      = ["amazon"]
@@ -56,7 +56,7 @@ resource "aws_eip" "vm_eip_1" {
 
   instance                  = aws_instance.virtualmachine_1.id
   associate_with_private_ip = "10.0.0.100"
-  depends_on                = [aws_internet_gateway.gw_1]
+  depends_on                = [module.vpc.gw_1]
 
   tags = {
     Name = "${var.infra_env}-eip-1"
