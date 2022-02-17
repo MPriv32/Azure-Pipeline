@@ -23,7 +23,7 @@ module "ec2" {
   }
 
   module "s3" {
-    source = ".modules/s3"
+    source = "./modules/s3"
     infra_env = var.infra_env
   }
 
@@ -33,6 +33,6 @@ module "ec2" {
   }
 
   module "vpc" {
-    source = ".modules/vpc"
+    source = "./modules/vpc"
     infra_env = var.infra_env
   }
