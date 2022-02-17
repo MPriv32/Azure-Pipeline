@@ -1,21 +1,38 @@
 provider "aws" {
   access_key = var.my_access_key
   secret_key = var.my_secret_key
-  region     = local.region
+  region     = var.region
 }
 
 provider "random" {
 }
 
-variable "my_access_key" {
-  type = string
+resource "random_id" "prefix" {
+  byte_length = 8
 }
 
-variable "my_secret_key" {
-  type = string
-}
+module "ec2" {
+  source = "./modules/ec2"
+  infra_env = var.infra_env
+  public_ssh_key = var.public_ssh_key
+  }
 
-variable "instance_type" {
-  type = string
-  default = "t2.micro"
-}
+  module "iam" {
+    source = "./modules/iam"
+    infra_env = var.infra_env
+  }
+
+  module "s3" {
+    source = ".modules/s3"
+    infra_env = var.infra_env
+  }
+
+  module "sg" {
+     source = "./modules/sg"
+    infra_env = var.infra_env
+  }
+
+  module "vpc" {
+    source = ".modules/vpc"
+    infra_env = var.infra_env
+  }

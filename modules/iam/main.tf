@@ -1,3 +1,7 @@
+terraform {
+  required_version = ">= 1.1.5"
+}
+
 locals {
   role_policy_arns = [
     "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy",

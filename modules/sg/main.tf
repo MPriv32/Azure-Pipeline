@@ -1,3 +1,7 @@
+terraform {
+  required_version = ">= 1.1.5"
+}
+
 # Allow WinRM to set adminstrator password
 resource "aws_security_group" "allow_winrm" {
   name        = "allow_winrm"

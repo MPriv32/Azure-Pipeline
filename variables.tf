@@ -1,13 +1,3 @@
-locals {
-  public_key = var.public_ssh_key
-  region     = var.region
-  region_az  = var.region_az
-}
-
-resource "random_id" "prefix" {
-  byte_length = 8
-}
-
 variable "region" {
   type = string
   default = "us-west-2"
@@ -24,4 +14,17 @@ variable "public_ssh_key" {
 
 variable "infra_env" {
   type = string
+}
+
+variable "my_access_key" {
+  type = string
+}
+
+variable "my_secret_key" {
+  type = string
+}
+
+variable "instance_type" {
+  type = string
+  default = "t2.micro"
 }

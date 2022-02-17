@@ -1,3 +1,7 @@
+terraform {
+  required_version = ">= 1.1.5"
+}
+
 # Create new vpc
 resource "aws_vpc" "vpc_1" {
   cidr_block = "10.0.0.0/16"
@@ -11,7 +15,7 @@ resource "aws_vpc" "vpc_1" {
 resource "aws_subnet" "subnet_1" {
   vpc_id            = aws_vpc.vpc_1.id
   cidr_block        = "10.0.0.0/24"
-  availability_zone = local.region_az
+  availability_zone = var.region_az
 
   tags = {
     Name = "${var.infra_env}-subnet-1"

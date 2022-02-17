@@ -1,3 +1,11 @@
+terraform {
+  required_version = ">= 1.1.5"
+}
+
+resource "random_id" "prefix" {
+  byte_length = 8
+}
+
 resource "aws_s3_bucket" "s3_bucket" {
   bucket = "${var.infra_env}-s3-bucket-${random_id.prefix.hex}"
 
