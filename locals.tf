@@ -1,13 +1,9 @@
 ########### Locals ###########
 locals {
-  name       = random_pet.name.id
   public_key = var.public_ssh_key
   region     = var.region
   region_az  = var.region_az
-}
-
-resource "random_pet" "name" {
-  length = 1
+  infra_env = terraform.workspace
 }
 
 resource "random_id" "prefix" {
@@ -16,10 +12,12 @@ resource "random_id" "prefix" {
 
 variable "region" {
   type = string
+  default = "us-west-2"
 }
 
 variable "region_az" {
   type = string
+  default = "us-west-2b"
 }
 
 variable "public_ssh_key" {

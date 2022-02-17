@@ -15,7 +15,7 @@ data "aws_ami" "windows_2019" {
 
 # Create a key pair to manage the servers
 resource "aws_key_pair" "AzureDevOps" {
-  key_name   = "azuredevops"
+  key_name   = terraform.workspace
   public_key = var.public_ssh_key
 }
 
@@ -25,7 +25,7 @@ resource "aws_network_interface" "vm_nic_1" {
   private_ips = ["10.0.0.100"]
 
   tags = {
-    Name = "${local.name}-nic-1"
+    Name = "${local.infra_env}-nic-1"
   }
 
   security_groups = [
@@ -43,7 +43,7 @@ resource "aws_eip" "vm_eip_1" {
   depends_on                = [aws_internet_gateway.gw_1]
 
   tags = {
-    Name = "${local.name}-eip-1"
+    Name = "${local.infra_env}-eip-1"
   }
 
 }
@@ -51,7 +51,7 @@ resource "aws_eip" "vm_eip_1" {
 # Deploy new virtual machine using Windows 2019 latest ami
 resource "aws_instance" "virtualmachine_1" {
   ami           = data.aws_ami.windows_2019.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
 
   key_name = aws_key_pair.AzureDevOps.id
 
@@ -75,7 +75,7 @@ resource "aws_instance" "virtualmachine_1" {
   user_data = file("./scripts/install-cwagent.ps1")
 
   tags = {
-    Name = "${local.name}-vm-1"
+    Name = "${local.infra_env}-vm-1"
   }
 
 }

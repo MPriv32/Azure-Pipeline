@@ -6,7 +6,7 @@ locals {
 }
 
 resource "aws_iam_instance_profile" "ec2_profile" {
-  name = "${local.name}-EC2-Profile"
+  name = "${local.infra_env}-EC2-Profile"
   role = aws_iam_role.ec2_role.name
 
   depends_on = [
@@ -25,7 +25,7 @@ resource "aws_iam_role_policy_attachment" "iam_policies" {
 }
 
 resource "aws_iam_role_policy" "ec2_iam_polcy" {
-  name = "${local.name}-EC2-Inline-Policy"
+  name = "${local.infra_env}-EC2-Inline-Policy"
   role = aws_iam_role.ec2_role.id
   policy = jsonencode(
     {
@@ -47,7 +47,7 @@ resource "aws_iam_role_policy" "ec2_iam_polcy" {
 }
 
 resource "aws_iam_role" "ec2_role" {
-  name = "${local.name}-EC2-Role"
+  name = "${local.infra_env}-EC2-Role"
   path = "/"
 
   assume_role_policy = jsonencode(
