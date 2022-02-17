@@ -22,7 +22,7 @@ stages:
         command: 'init'
         backendServiceAWS: 's3 backend'
         backendAWSBucketName: 'mp32-terraform-bucket-backend'
-        backendAWSKey: 'tf/terraform.tfstate'
+        backendAWSKey: 'env:/dev/default/terraform.tfstate'
     
     - task: TerraformTaskV2@2
       inputs:
