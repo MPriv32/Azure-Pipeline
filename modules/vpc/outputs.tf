@@ -7,5 +7,5 @@ output "vpc_1" {
 }
 
 output "gw_1" {
-  value = aws_internet_gateway.gw_1
+  value = aws_internet_gateway.gw_1.id
 }
