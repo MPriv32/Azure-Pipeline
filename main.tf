@@ -36,12 +36,12 @@ module "sg" {
   source = "./modules/sg" 
 
   infra_env = var.infra_env
-  vpc_id = module.vpc.vpc_1.id
+  vpc_ids = module.vpc.vpc_1.id
   }
 
 module "vpc" {
   source = "./modules/vpc"
-  
+
   infra_env = var.infra_env
 }
 
