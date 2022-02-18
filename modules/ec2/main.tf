@@ -25,7 +25,7 @@ resource "aws_key_pair" "AzureDevOps" {
 
 # Create network inferface for EC2 instance and assign secruity groups
 resource "aws_network_interface" "vm_nic_1" {
-  subnet_id   = module.vpc.subnet_1.id
+  subnet_id   = var.subnet_1
   private_ips = ["10.0.0.100"]
 
   tags = {
@@ -33,8 +33,8 @@ resource "aws_network_interface" "vm_nic_1" {
   }
 
   security_groups = [
-    module.sg.allow_rdp.id,
-    module.sg.allow_winrm.id,
+    var.rdp_id,
+    var.winrm_id,
   ]
 }
 
@@ -44,7 +44,7 @@ resource "aws_eip" "vm_eip_1" {
 
   instance                  = aws_instance.virtualmachine_1.id
   associate_with_private_ip = "10.0.0.100"
-  depends_on                = [module.vpc.gw_1]
+  depends_on                = [var.gw_1]
 
   tags = {
     Name = "${var.infra_env}-eip-1"
