@@ -1,7 +1,13 @@
 trigger:
+<<<<<<< HEAD
   - prod
 pr:
   - prod
+=======
+  - dev
+pr:
+  - dev
+>>>>>>> 94ec7e70b6738ae98b2510351764b6206942b874
 
 pool:
   vmImage: windows-latest
@@ -22,18 +28,26 @@ stages:
         command: 'init'
         backendServiceAWS: 's3 backend'
         backendAWSBucketName: 'mp32-terraform-bucket-backend'
-        backendAWSKey: 'tf/terraform.tfstate'
+        backendAWSKey: 'env:/dev/default/terraform.tfstate'
     
     - task: TerraformTaskV2@2
       inputs:
         provider: 'aws'
         command: 'plan'
+<<<<<<< HEAD
         commandOptions: '-var "my_access_key=$(my_access_key)" -var "my_secret_key=$(my_secret_key)" -var "public_ssh_key=$(public_ssh_key)" -var "infra_env=prod"'
+=======
+        commandOptions: '-var "my_access_key=$(my_access_key)" -var "my_secret_key=$(my_secret_key)" -var "public_ssh_key=$(public_ssh_key)" -var "infra_env=$(infra_env)"'
+>>>>>>> 94ec7e70b6738ae98b2510351764b6206942b874
         environmentServiceNameAWS: 's3 backend'
     
     - task: TerraformTaskV2@2
       inputs:
         provider: 'aws'
         command: 'apply'
+<<<<<<< HEAD
         commandOptions: '-var "my_access_key=$(my_access_key)" -var "my_secret_key=$(my_secret_key)" -var "public_ssh_key=$(public_ssh_key)" -var "infra_env=prod"'
+=======
+        commandOptions: '-var "my_access_key=$(my_access_key)" -var "my_secret_key=$(my_secret_key)" -var "public_ssh_key=$(public_ssh_key)" -var "infra_env=$(infra_env)"'
+>>>>>>> 94ec7e70b6738ae98b2510351764b6206942b874
         environmentServiceNameAWS: 's3 backend'

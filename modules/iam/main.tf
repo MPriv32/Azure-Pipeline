@@ -10,7 +10,11 @@ locals {
 }
 
 resource "aws_iam_instance_profile" "ec2_profile" {
+<<<<<<< HEAD:modules/iam/main.tf
   name = "${var.infra_env}-instance-Profile"
+=======
+  name = "${var.infra_env}-EC2-Profile"
+>>>>>>> 94ec7e70b6738ae98b2510351764b6206942b874:iam.tf
   role = aws_iam_role.ec2_role.name
 
   depends_on = [
