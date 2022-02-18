@@ -23,6 +23,6 @@ variable "gw_1" {
   type = string
 }
 
-variable "subnet_1" {
+variable "subnet_id" {
   type = string
 }

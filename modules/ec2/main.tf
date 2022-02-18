@@ -25,7 +25,7 @@ resource "aws_key_pair" "AzureDevOps" {
 
 # Create network inferface for EC2 instance and assign secruity groups
 resource "aws_network_interface" "vm_nic_1" {
-  subnet_id   = var.subnet_1
+  subnet_id   = var.subnet_id
   private_ips = ["10.0.0.100"]
 
   tags = {
