@@ -11,6 +11,7 @@ terraform {
     module "sg" {
     source = "../sg"
 
+    vpc_id = module.vpc.vpc_1.id
     infra_env = var.infra_env
   }
 
