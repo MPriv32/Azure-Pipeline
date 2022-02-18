@@ -16,8 +16,11 @@ module "ec2" {
 
   infra_env = var.infra_env
   public_ssh_key = var.public_ssh_key
-  allow_rdp = module.sg.allow_rdp.id
-  allow_winrm = module.sg.allow_winrm.id
+
+  security_groups = [
+  module.sg.allow_rdp.id,
+  module.sg.allow_winrm.id,
+  ]
 }
 
 module "iam" {
