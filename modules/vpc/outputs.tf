@@ -3,7 +3,7 @@ output "subnet_1" {
 }
 
 output "vpc_1" {
-  value = aws_vpc.vpc_1
+  value = aws_vpc.vpc_1.id
 }
 
 output "gw_1" {
