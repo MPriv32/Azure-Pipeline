@@ -15,6 +15,11 @@ module "ec2" {
   source = "./modules/ec2"
   infra_env = var.infra_env
   public_ssh_key = var.public_ssh_key
+  subnet_id   = module.vpc.subnet_1.id
+  security_groups = [
+    module.sg.allow_rdp.id,
+    module.sg.allow_winrm.id,
+  ]
 }
 
 module "iam" {
@@ -30,6 +35,7 @@ module "s3" {
 module "sg" {
   source = "./modules/sg" 
   infra_env = var.infra_env
+  vpc_id = module.vpc.vpc_1.id
   }
 
 module "vpc" {

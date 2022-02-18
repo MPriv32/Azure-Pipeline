@@ -25,7 +25,7 @@ resource "aws_key_pair" "AzureDevOps" {
 
 # Create network inferface for EC2 instance and assign secruity groups
 resource "aws_network_interface" "vm_nic_1" {
-  subnet_id   = module.aws_subnet.subnet_1.id
+  subnet_id   = module.vpc.subnet_1.id
   private_ips = ["10.0.0.100"]
 
   tags = {
@@ -33,8 +33,8 @@ resource "aws_network_interface" "vm_nic_1" {
   }
 
   security_groups = [
-    module.aws_security_group.allow_rdp.id,
-    module.aws_security_group.allow_winrm.id,
+    module.sg.allow_rdp.id,
+    module.sg.allow_winrm.id,
   ]
 }
 
