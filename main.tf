@@ -39,7 +39,7 @@ module "sg" {
   source = "./modules/sg" 
 
   infra_env = var.infra_env
-  vpc = module.vpc.vpc_1.id
+  vpc_id = module.vpc.vpc_1.id
   }
 
 module "vpc" {
