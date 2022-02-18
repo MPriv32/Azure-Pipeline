@@ -18,8 +18,8 @@ module "ec2" {
   public_ssh_key = var.public_ssh_key
 
   security_groups = [
-  module.sg.allow_rdp.id,
-  module.sg.allow_winrm.id,
+  module.sg.allow_rdp,
+  module.sg.allow_winrm,
   ]
 }
 
@@ -39,7 +39,7 @@ module "sg" {
   source = "./modules/sg" 
 
   infra_env = var.infra_env
-  vpc_id = module.vpc.vpc_1.id
+  vpc_id = module.vpc.vpc_1
   }
 
 module "vpc" {
