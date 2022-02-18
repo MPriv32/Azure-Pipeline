@@ -31,7 +31,7 @@ module "s3" {
 }
 
 module "sg" {
-  source = "./sg"
+  source = "./modules/sg"
 
   vpc_id = module.vpc.vpc_1.id
   infra_env = var.infra_env
