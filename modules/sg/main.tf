@@ -12,7 +12,7 @@ terraform {
 resource "aws_security_group" "allow_winrm" {
   name        = "allow_winrm"
   description = "Allow access the instances via WinRM over HTTP and HTTPS"
-  vpc_id      = module.vpc.vpc_.id
+  vpc_id      = module.vpc.vpc_1.id
 
   ingress {
     description = "Access the instances via WinRM over HTTP and HTTPS"
