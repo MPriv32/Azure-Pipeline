@@ -9,7 +9,7 @@
 
 This was my first project utilizing **Azure DevOps** and the main purpose was to get hands-on experience with it.
 
-I decided to utilize some services that I was familiar with, to make it a little bit easier on myself when trying to learn Azure DevOps.
+I decided to utilize some services that I was familiar with, such as Terraform, to make it a little bit easier on myself when trying to learn Azure DevOps.
 
 I used **Terraform** to create a **VPC** with an internet gateway, a private subnet, an **EC2 instance** in that private subnet with an elastic IP, security groups to allow connectivity to my VM and an **S3** bucket to store my Terraform state file.
 
